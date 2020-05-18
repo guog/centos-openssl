@@ -4,7 +4,7 @@ WORKDIR /usr/local/src/
 ENV OPENSSL_VERSION OpenSSL_1_1_1g
 
 RUN yum update -y \
-  && yum -y install make perl gcc \
+  && yum -y install make perl gcc wget \
   && wget -O ${OPENSSL_VERSION}.tar.gz https://github.com/openssl/openssl/archive/OpenSSL_1_1_1g.tar.gz \
   && tar -zxvf ${OPENSSL_VERSION}.tar.gz \
   && cd ${OPENSSL_VERSION} \
