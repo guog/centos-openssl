@@ -5,9 +5,9 @@ ENV OPENSSL_VERSION OpenSSL_1_1_1g
 
 RUN yum update -y \
   && yum -y install make perl gcc wget \
-  && wget -O ${OPENSSL_VERSION}.tar.gz https://github.com/openssl/openssl/archive/OpenSSL_1_1_1g.tar.gz \
-  && tar -zxvf ${OPENSSL_VERSION}.tar.gz \
-  && cd ${OPENSSL_VERSION} \
+  && wget https://github.com/openssl/openssl/archive/${OPENSSL_VERSION}.tar.gz \
+  && tar -zxvf ./${OPENSSL_VERSION}.tar.gz \
+  && cd openssl-${OPENSSL_VERSION} \
   && ./config --prefix=/usr/local/openssl --openssldir=/usr/local/ssl \
   && make -j 2 && make install \
   && echo  /usr/local/openssl/lib >> /etc/ld.so.conf.d/openssl.conf \
